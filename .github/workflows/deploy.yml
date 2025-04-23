@@ -10,11 +10,7 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      # - name: Install NodeJS
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 18
-
+        
       - name: Install dependancies
         run: npm ci
       - name: Run tests
@@ -36,7 +32,7 @@ jobs:
         run: npm run build
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist-files
           path: |
