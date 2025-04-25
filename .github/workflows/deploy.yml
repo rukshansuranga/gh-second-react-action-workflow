@@ -1,9 +1,9 @@
 name: Deploy website
-on: 
-  push:
-    branches:
-      - main
-
+# on:
+#   push:
+#     branches:
+#       - main
+on: [workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -61,7 +61,7 @@ jobs:
     steps:
       - name: Get build artifacts
         uses: actions/download-artifact@v4
-        with: 
+        with:
           name: dist-files
 
       - name: Output contents
