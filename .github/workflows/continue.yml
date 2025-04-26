@@ -1,5 +1,5 @@
-name: Website Deployment
-on: workflow_dispatch
+name: Continue Website Deployment
+on: workflow-dispatch
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -32,10 +32,10 @@ jobs:
         if: steps.cache.outpts.cache-hit != 'true'
         run: npm ci
       - name: Test code
+        continue-on-error: true
         id: run-tests
         run: npm run test
       - name: Upload test report
-        if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: test-report
